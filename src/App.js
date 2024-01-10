@@ -1,10 +1,10 @@
 import React from 'react';
 import Count from './Count'
-import Cal from './Calculator'
+import Calculator from './Calculator_hard';
 
 function App() {
   return (
-    <Count />
+    <Calculator />
   );
 }
 
