@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import Styles from './Calculator.module.css'
 
 const Calculator = () => {
-  const [Display, setDisplay] = useState("0");
   const [Value, setValue] = useState("");
   const [Result, setResult] = useState(0);
 
   const getNum = () => {
-    setValue(prev + this.target.value);
-  }
-  const getOper = () => {
-    setValue(prev + this.target.value);
-  }
+    setValue((prev) => prev + this.target.value);
+  };
 
+  const getoper = () => {
+    setValue((prev) => prev + this.target.value);
+  };
   return (
     <div className='calculatorArea'>
       <div className={Styles.container}>
@@ -21,7 +20,7 @@ const Calculator = () => {
 
           </div>
           <div className={Styles.currentArea}>
-            <h1>{CurrentValue}</h1>
+            <h1></h1>
           </div>
         </div>
         <div className={Styles.numArea}>
