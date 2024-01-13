@@ -30,6 +30,25 @@ const Calculator_hard = () => {
       setValue(Math.abs(Value));
     }
   }
+  
+  const operatorHandler = (e) => {
+    let operlatorInput = e.target.value;
+    setOperator(operlatorInput);
+    setOldValue(Value);
+    setValue(0);
+  }
+
+  const calculate = () => {
+    if(operator === "/"){
+      setValue(parseFloat(OldValue) / parseFloat(Value));
+    } else if(operator === "X"){
+      setValue(parseFloat(OldValue) * parseFloat(Value));
+    } else if(operator === "-"){
+      setValue(parseFloat(OldValue) - parseFloat(Value));
+    } else if(operator === "+"){
+      setValue(parseFloat(OldValue) + parseFloat(Value));
+    }
+  }
 
   return(
     <div className="CalculatorArea">
@@ -40,8 +59,10 @@ const Calculator_hard = () => {
             <button onClick={clear}>AC</button>
             <button onClick={changeSign}>+/-</button>
             <button onClick={percent}>%</button>
+            <button onClick={operatorHandler}>+</button>
             <button onClick={inputValue} value={1}>1</button>
             <button onClick={inputValue} value={2}>2</button>
+            <button onClick={calculate}>=</button>
           </div>
         </div>
       </div>
