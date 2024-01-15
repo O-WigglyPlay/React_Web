@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   width: 390px;
   margin: 0 auto;
@@ -13,19 +18,50 @@
   color: white;
   display: flex;
   justify-content: flex-end;
-  margin-right: 10px;
-  font: 35px;
+  margin-right: 20px;
+  font-size: 70px;
+  font-weight: 400;
 }
 
-button{
-  width: 40px;
-  height: 40px;
-  font-size: 15px;
+.btn_container{
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, 0.5fr);;
+}
+
+button {
+  width: 70px;
+  height: 70px;
   border: none;
-  border-radius: 20px;
-  margin: 3px;
+  margin: 10px;
+  border-radius: 2em;
+  font-size: 30px;
 }
 
 button:hover{
   cursor: pointer;
+}
+
+.zero{
+  grid-column: 1/3;
+  text-align: left;
+  width: 90%;
+  padding-left: 30px;
+  background-color: rgb(65, 64, 64);
+  color: white;
+}
+
+.orange {
+  background-color: orange;
+  color: white;
+}
+
+.gray{
+  background-color: gray;
+  color: white;
+}
+
+.deepgray{
+  background-color: rgb(65, 64, 64);
+  color: white;
 }
