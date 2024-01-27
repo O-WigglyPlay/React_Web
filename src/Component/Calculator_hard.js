@@ -40,7 +40,7 @@ const Calculator_hard = () => {
 
   const calculate = () => {
     if (operator === "/") {
-      setValue(parseFloat(OldValue) / parseFloat(Value));
+      setValue(+OldValue / +Value);
     } else if (operator === "X") {
       setValue(parseFloat(OldValue) * parseFloat(Value));
     } else if (operator === "-") {

@@ -26,7 +26,7 @@
 .btn_container{
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(4, 0.5fr);;
+  grid-template-columns: repeat(4, 1fr);;
 }
 
 button {
