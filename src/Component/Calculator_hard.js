@@ -1,10 +1,11 @@
 import react, { useState } from 'react';
-import styles from './Calculator.module.css'
+import styles from './Calculator.module.css';
 
 const Calculator_hard = () => {
-  const [Value, setValue] = useState(0);
+  const [Value, setValue] = useState(0);    //변수나 함수 모두 처음은 소문자 다음 단어부터는 대문자 oldValue 이런식으로 사용
   const [OldValue, setOldValue] = useState(0);
-  const [operator, setOperator] = useState(0);
+  const [operator, setOperator] = useState("");
+  //useState는 최대한 적게!
 
   const inputValue = (e) => {
     let input = e.target.value;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Count from './Count'
+import Count from './Component/Count'
 import Calculator from './Component/Calculator_hard';
 
 function App() {
