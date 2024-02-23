@@ -14,14 +14,14 @@
   padding: 10px;
 }
 
-.result {
+/* .result {
   color: white;
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
   font-size: 70px;
   font-weight: 400;
-}
+} */
 
 .btn_container{
   display: grid;
@@ -29,7 +29,7 @@
   grid-template-columns: repeat(4, 1fr);;
 }
 
-button {
+/* button {
   width: 70px;
   height: 70px;
   border: none;
@@ -40,7 +40,7 @@ button {
 
 button:hover{
   cursor: pointer;
-}
+} */
 
 .zero{
   grid-column: 1/3;
