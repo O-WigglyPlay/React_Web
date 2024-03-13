@@ -199,11 +199,21 @@ function App() {
   const onSelDelHandle = () => {
     setGroup((prev) => prev.filter((value) => !value.check));
   };
-  
-
-  const inputTodoListHandle = () => {
-
-  }
+  const inputTodoListHandle = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const inputValue = e.target.value;
+      if (inputValue !== "") {
+        const newTodo = {
+          id: group.length,
+          check: false,
+          content: inputValue,
+        };
+        setGroup((prev) => [...prev, newTodo]);
+        e.target.value = "";
+      }
+    }
+  };
 
   return (
     <>
@@ -228,7 +238,7 @@ function App() {
             />
           </svg>
 
-          <TodoInput type="text" placeholder="Please enter your ToDo List" value={inputTodoListHandle}/>
+          <TodoInput type="text" placeholder="Please enter your ToDo List" onKeyDown={inputTodoListHandle} />
         </InputForm>
         <TodoContents>
           <TodoTitle>List</TodoTitle>
@@ -252,7 +262,7 @@ function App() {
                   strokeWidth={1.5}
                   stroke="currentColor"
                   className="w-6 h-6"
-                  onClick={()=>onDelHandle(x.id)}
+                  onClick={() => onDelHandle(x.id)}
                 >
                   <path
                     strokeLinecap="round"
