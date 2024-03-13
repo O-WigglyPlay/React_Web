@@ -201,7 +201,7 @@ function App() {
   };
   
 
-  const inputTodoList = () => {
+  const inputTodoListHandle = () => {
 
   }
 
@@ -228,7 +228,7 @@ function App() {
             />
           </svg>
 
-          <TodoInput type="text" placeholder="Please enter your ToDo List"/>
+          <TodoInput type="text" placeholder="Please enter your ToDo List" value={inputTodoListHandle}/>
         </InputForm>
         <TodoContents>
           <TodoTitle>List</TodoTitle>
