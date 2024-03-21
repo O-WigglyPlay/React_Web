@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import Header from "./Components/TodoList/Header";
+import InputForm from "./Components/TodoList/InputForm";
+import TodoContents from "./Components/TodoList/TodoContents";
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -34,8 +37,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   background-color: black;
-  display: flex;
-  justify-content: center;
+  min-height: 100vh;
 }
 ol, ul {
 	list-style: none;
@@ -56,101 +58,10 @@ table {
 
 const Wrapper = styled.div`
   background-color: white;
-  width: 70vw;
-  height: 80vh;
-  margin-top: 45px;
   padding: 30px;
-`;
-
-const Header = styled.div`
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-`;
-
-const Title = styled.h1`
-  font-size: 32px;
-  font-weight: bolder;
-`;
-
-const InputForm = styled.form`
-  position: relative;
-  svg {
-    width: 20px;
-    height: 20px;
-    color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 10px;
-    left: 6px;
-  }
-`;
-
-const TodoInput = styled.input`
-  width: 100%;
-  height: 40px;
-  border-radius: 8px;
-  border: solid 1px rgba(0, 0, 0, 0.3);
-  padding-left: 30px;
-`;
-
-const TodoContents = styled.div`
-  margin: 10px 0;
-`;
-
-const TodoTitle = styled.h1`
-  font-weight: 600;
-`;
-
-const TodoLists = styled.div`
-  border-top: 2px solid rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-`;
-
-const TodoList = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-
-  svg {
-    width: 30px;
-  }
-`;
-
-const TodoFirst = styled.div`
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  input {
-    margin-right: 20px;
-  }
-  h2 {
-    margin-top: 4px;
-  }
-`;
-
-const TodoBottom = styled.div`
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const TodoSuccess = styled.div`
-  font-weight: bolder;
-`;
-
-const TodoBtns = styled.div`
-  button:first-child {
-    margin-right: 10px;
-  }
-`;
-
-const TodoBtn = styled.button`
-  border: 0;
-  border-radius: 4px;
-  background-color: rgb(108, 117, 125);
-  padding: 7px;
-  color: white;
 `;
 
 function App() {
@@ -159,130 +70,13 @@ function App() {
     { id: 1, check: false, content: "Study" },
     { id: 2, check: false, content: "Shopping" },
   ]);
-
-  const onCheckHandle = (e) => {
-    const todoId = +e.target.value;
-    setGroup((prev) => {
-      const targetTodoIndex = prev.findIndex((todoObj) => {
-        return todoObj.id === todoId;
-      });
-      const newTodo = {
-        content: prev[targetTodoIndex].content,
-        check: !prev[targetTodoIndex].check,
-        id: todoId,
-      };
-      return [
-        ...prev.slice(0, targetTodoIndex),
-        newTodo,
-        ...prev.slice(targetTodoIndex + 1),
-      ];
-    });
-  };
-
-  const onDelHandle = (deleteId) => {
-    const todoId = +deleteId;
-    setGroup((prev) => {
-      const targetTodoIndex = prev.findIndex((value) => value.id === todoId);
-      return [
-        ...prev.slice(0, targetTodoIndex),
-        ...prev.slice(targetTodoIndex + 1),
-      ];
-    });
-  };
-
-  const completeCheck = group.filter((value) => value.check === true).length;
-
-  const allClear = () => {
-    setGroup([]);
-  };
-
-  const onSelDelHandle = () => {
-    setGroup((prev) => prev.filter((value) => !value.check));
-  };
-  const inputTodoListHandle = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const inputValue = e.target.value;
-      if (inputValue !== "") {
-        const newTodo = {
-          id: group.length,
-          check: false,
-          content: inputValue,
-        };
-        setGroup((prev) => [...prev, newTodo]);
-        e.target.value = "";
-      }
-    }
-  };
-
   return (
     <>
       <GlobalStyle />
       <Wrapper>
-        <Header>
-          <Title>ToDo List App</Title>
-        </Header>
-        <InputForm>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-            />
-          </svg>
-
-          <TodoInput type="text" placeholder="Please enter your ToDo List" onKeyDown={inputTodoListHandle} />
-        </InputForm>
-        <TodoContents>
-          <TodoTitle>List</TodoTitle>
-          <TodoLists>
-            {group.map((x) => (
-              <TodoList>
-                <TodoFirst>
-                  <input
-                    type="checkbox"
-                    name=""
-                    value={x.id}
-                    checked={x.check}
-                    onChange={onCheckHandle}
-                  />
-                  <h2>{x.content}</h2>
-                </TodoFirst>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                  onClick={() => onDelHandle(x.id)}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-                  />
-                </svg>
-              </TodoList>
-            ))}
-          </TodoLists>
-          <TodoBottom>
-            <TodoSuccess>
-              <h3>Completed Todos : {completeCheck}</h3>
-            </TodoSuccess>
-            <TodoBtns>
-              <TodoBtn onClick={onSelDelHandle}>Delete selected</TodoBtn>
-              <TodoBtn onClick={allClear}>Clear all</TodoBtn>
-            </TodoBtns>
-          </TodoBottom>
-        </TodoContents>
+        <Header title="ToDo List App" />
+        <InputForm setGroup={setGroup} />
+        <TodoContents group={group} setGroup={setGroup} />
       </Wrapper>
     </>
   );
