@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import styles from '../Styles/Calculator.module.css';
-import Button from './Button';
-import Display from './Display';
+import React, { useState } from "react";
+import styles from "../../Styles/Calculator.module.css";
+import Button from "./Button";
+import Display from "./Display";
 
 const Calculator = () => {
   const [value, setValue] = useState(0);
@@ -62,22 +62,78 @@ const Calculator = () => {
             <Button className={styles.gary} onClick={clear} value="AC" />
             <Button className={styles.gary} onClick={changeSign} value="+/-" />
             <Button className={styles.gary} onClick={percent} value="%" />
-            <Button className={styles.orange} onClick={operatorHandle} value={'/'} />
-            <Button className={styles.deepgray} onClick={inputValue} value={7} />
-            <Button className={styles.deepgray} onClick={inputValue} value={8} />
-            <Button className={styles.deepgray} onClick={inputValue} value={9} />
-            <Button className={styles.orange} onClick={operatorHandle} value={'X'} />
-            <Button className={styles.deepgray} onClick={inputValue} value={4} />
-            <Button className={styles.deepgray} onClick={inputValue} value={5} />
-            <Button className={styles.deepgray} onClick={inputValue} value={6} />
-            <Button className={styles.orange} onClick={operatorHandle} value={'-'} />
-            <Button className={styles.deepgray} onClick={inputValue} value={1} />
-            <Button className={styles.deepgray} onClick={inputValue} value={2} />
-            <Button className={styles.deepgray} onClick={inputValue} value={3} />
-            <Button className={styles.orange} onClick={operatorHandle} value={'+'} />
+            <Button
+              className={styles.orange}
+              onClick={operatorHandle}
+              value={"/"}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={7}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={8}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={9}
+            />
+            <Button
+              className={styles.orange}
+              onClick={operatorHandle}
+              value={"X"}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={4}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={5}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={6}
+            />
+            <Button
+              className={styles.orange}
+              onClick={operatorHandle}
+              value={"-"}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={1}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={2}
+            />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={3}
+            />
+            <Button
+              className={styles.orange}
+              onClick={operatorHandle}
+              value={"+"}
+            />
             <Button className={styles.zero} onClick={inputValue} value={0} />
-            <Button className={styles.deepgray} onClick={inputValue} value={"."} />
-            <Button className={styles.orange} onClick={calculate} value={'='} />
+            <Button
+              className={styles.deepgray}
+              onClick={inputValue}
+              value={"."}
+            />
+            <Button className={styles.orange} onClick={calculate} value={"="} />
           </div>
         </div>
       </div>

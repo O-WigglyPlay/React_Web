@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from '../Styles/Button.module.css';
-import Styled from 'styled-components';
+import React from "react";
+import styled from "../../Styles/Button.module.css";
+// import Styled from 'styled-components';
 
 // const Buttons = Styled.button`
 //     width: 70px;

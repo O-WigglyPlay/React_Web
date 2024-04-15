@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./Components/TodoList/Header";
 import InputForm from "./Components/TodoList/InputForm";
+import Calc from "./Components/Calculator/Calculator";
 import TodoContents from "./Components/TodoList/TodoContents";
 
 const GlobalStyle = createGlobalStyle`
